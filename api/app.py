@@ -15,7 +15,7 @@ def home():
     url = "https://api.apollo.io/v1/labels"
 
     querystring = {
-        "api_key": os.environ["API_KEY"]
+        "api_key": os.environ["LABEL_API_KEY"]
     }
 
     headers = {

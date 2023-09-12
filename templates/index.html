@@ -19,23 +19,27 @@
           <p
             class="mb-6 max-w-2xl font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"
           >
-            Input the website URL and Click ENTER
+            Kindly select your choice list and Click the Get Data button to
+            download a csv file of the all the contacts on that list. 🤗
           </p>
           <form action="{{url_for('download_file')}}" , method="post">
-            <div class="mb-6">
-              <label
-                for="url"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >URL</label
-              >
-              <input
-                type="url"
-                id="url"
-                name="url"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="https://www.next.com/"
-                required
-              />
+            <div class="mb-6 grid gap-4 grid-cols-3 grid-rows-3">
+              {% for label in labels %}
+              <div class="flex items-center mb-4">
+                <input
+                  id="radio-label"
+                  type="radio"
+                  value="{{label.id}}"
+                  name="radio-label"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label
+                  for="radio-label"
+                  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >{{ label.name }}</label
+                >
+              </div>
+              {% endfor %}
             </div>
             <button type="submit">
               <a

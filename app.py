@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_file, request
+from flask import Flask, render_template, send_file, request, jsonify
 import requests
 from dotenv import load_dotenv
 
@@ -33,7 +33,7 @@ def home():
 
 @app.route('/download_file', methods=['POST'])
 def download_file():
-    url = request.form['url']
-    # label_id = request.form['url']
-    print(url)
-    return send_file('hf-logo.png', as_attachment=True)
+    label_id = request.form['radio-label']
+    print(label_id)
+    return jsonify({"label_id": label_id})
+    # return send_file('hf-logo.png', as_attachment=True)

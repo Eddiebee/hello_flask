@@ -3,7 +3,7 @@ import requests
 from dotenv import load_dotenv
 import os
 
-from  utils.generate_leads import get_leads
+from utils.generate_leads import get_leads
 
 app = Flask(__name__)
 

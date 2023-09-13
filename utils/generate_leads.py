@@ -26,8 +26,6 @@ def get_leads(label_id: str):
     response = requests.request("POST", url, headers=headers, json=data)
     total_pages = response.json()["pagination"]["total_pages"]
 
-    response.json()
-
     for i in range(total_pages):
         data = {
             "api_key": os.environ["LABEL_API_KEY"],

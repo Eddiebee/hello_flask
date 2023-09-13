@@ -129,7 +129,7 @@ def get_leads(label_id: str):
 
     # write files to csv
     ts = time.time()
-    filename = f"{ts}.csv"
+    filename = f"/tmp/{ts}.csv"
 
     with open(filename, 'w', newline='') as csvfile:
         fieldnames = ['Name', 'Title', "Email",

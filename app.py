@@ -1,8 +1,9 @@
 from flask import Flask, render_template, send_file, request, jsonify
 import requests
 from dotenv import load_dotenv
-
 import os
+
+from  utils.generate_leads import get_leads
 
 app = Flask(__name__)
 
@@ -15,7 +16,7 @@ def home():
     url = "https://api.apollo.io/v1/labels"
 
     querystring = {
-        "api_key": os.environ["TEST_API_KEY"]
+        "api_key": os.environ["LABEL_API_KEY"]
     }
 
     headers = {
@@ -34,6 +35,10 @@ def home():
 @app.route('/download_file', methods=['POST'])
 def download_file():
     label_id = request.form['radio-label']
-    print(label_id)
-    return jsonify({"label_id": label_id})
-    # return send_file('hf-logo.png', as_attachment=True)
+    try:
+        _, filename = get_leads(label_id=label_id)
+    except requests.exceptions.HTTPError as err:
+        print("HTTP Error")
+        print(err.args[0])
+
+    return send_file(filename, as_attachment=True)

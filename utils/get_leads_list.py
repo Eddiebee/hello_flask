@@ -2,7 +2,7 @@ import csv
 import pprint
 
 
-def get_leads():
+def get_leads_list():
     # we are using this new pattern to reduce query time and load time.
     leads_list = []
     with open('prospective_leads.csv', 'r') as file:
@@ -24,4 +24,4 @@ def get_leads():
     return leads_list
 
 
-print(len(get_leads()))
+print(len(get_leads_list()))

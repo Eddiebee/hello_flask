@@ -5,7 +5,7 @@ import os
 import time
 import csv
 
-from utils.get_leads_list  import  get_leads
+from utils.get_leads_list  import  get_leads_list
 
 
 def get_leads(label_id: str):
@@ -108,7 +108,7 @@ def get_leads(label_id: str):
     #         "lead_title":  d[4]
     #     })
 
-    leads_list = get_leads()
+    leads_list = get_leads_list()
 
     # connect contacts to leads
     contacts_with_leads = []

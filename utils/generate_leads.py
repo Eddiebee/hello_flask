@@ -91,24 +91,24 @@ def get_leads(label_id: str):
     #                            "lead_title": lead_title})
 
     # we are using this new pattern to reduce query time and load time.
-    # leads_list = []
-    # with open('prospective_leads.csv', 'r') as file:
-    #     reader = csv.reader(file)
-    #     data = list(reader)
+    leads_list = []
+    with open('prospective_leads.csv', 'r') as file:
+        reader = csv.reader(file)
+        data = list(reader)
 
-    # # transform data to expected format
-    # data.pop(0)
+    # transform data to expected format
+    data.pop(0)
 
-    # for d in data:
-    #     # we have 5 columns
-    #     leads_list.append({
-    #         "organization_id": d[1],
-    #         "organization_title": d[2],
-    #         "lead_name": d[3],
-    #         "lead_title":  d[4]
-    #     })
+    for d in data:
+        # we have 5 columns
+        leads_list.append({
+            "organization_id": d[1],
+            "organization_title": d[2],
+            "lead_name": d[3],
+            "lead_title":  d[4]
+        })
 
-    leads_list = get_leads_list()
+    # leads_list = get_leads_list()
 
     # connect contacts to leads
     contacts_with_leads = []

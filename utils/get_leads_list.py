@@ -22,6 +22,3 @@ def get_leads_list():
         })
 
     return leads_list
-
-
-print(len(get_leads_list()))
